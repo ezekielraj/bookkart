@@ -4,5 +4,10 @@
         "robmorgan/phinx": "^0.8.1",
         "monolog/monolog": "^1.23",
         "fzaninotto/faker": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "Classes/"
+        }
     }
 }
