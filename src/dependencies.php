@@ -3,6 +3,7 @@
 
 $container = $app->getContainer();
 
+
 // monolog
 $container['logger'] = function ($c) {
     $settings = $c->get('settings')['logger'];

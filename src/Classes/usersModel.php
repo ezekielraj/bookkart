@@ -1,6 +1,6 @@
 <?php
 
-class userModel {
+class usersModel {
     
     public function __construct($db) {
         $this->db = $db;
