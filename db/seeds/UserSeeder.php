@@ -29,6 +29,6 @@ class UserSeeder extends AbstractSeed
             ];
         }
 
-        $this->insert('users', $data);
+//        $this->insert('users', $data);
     }
 }

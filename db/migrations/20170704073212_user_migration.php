@@ -40,5 +40,6 @@ class UserMigration extends AbstractMigration
               ->addIndex(array('username', 'email'), array('unique' => true))
               ->create();
 
+
     }
 }
