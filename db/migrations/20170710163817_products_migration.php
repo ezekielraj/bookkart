@@ -27,8 +27,56 @@ class ProductsMigration extends AbstractMigration
      */
     public function up()
     {
+        if($this->hasTable('Suppliers') && $this->hasTable('Category')){
 	$this->execute("
-CREATE TABLE IF NOT EXISTS `Products` ( `ProductID` INT(50) NOT NULL AUTO_INCREMENT , `SKU` INT(100) NOT NULL , `IDSKU` INT(100) NOT NULL , `VendorProductID` INT(100) NOT NULL , `ProductName` VARCHAR(100) NOT NULL , `ProductDescription` VARCHAR(100) NOT NULL , `SupplierID` INT(50) NOT NULL , `CategoryID` INT(50) NOT NULL , `QuantityPerUnit` INT NOT NULL , `UnitPrice` INT NOT NULL , `MSRP` INT NOT NULL , `AvailableSize` INT NOT NULL , `AvailableColors` INT NOT NULL , `Size` INT NOT NULL , `Color` INT NOT NULL , `Discount` INT NOT NULL , `UnitWeight` INT NOT NULL , `UnitsInStock` INT NOT NULL , `UnitsOnOrder` INT NOT NULL , `ReorderLevel` INT NOT NULL , `ProductAvailable` INT NOT NULL , `DiscountAvailable` INT NOT NULL , `CurrentOrder` INT NOT NULL , `Picture` INT NOT NULL , `Ranking` INT NOT NULL , `Note` INT NOT NULL , `Created` DATETIME NOT NULL , `Updated` DATETIME NOT NULL , INDEX `ProductID` (`ProductID`(50))) ENGINE = InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+        CREATE TABLE IF NOT EXISTS `Products` ( 
+            `ProductID` INT(50) NOT NULL AUTO_INCREMENT, 
+            `SKU` INT(100) NOT NULL , 
+            `IDSKU` INT(100) NOT NULL , 
+            `VendorProductID` INT(100) NOT NULL , 
+            `ProductName` VARCHAR(100) NOT NULL , 
+            `ProductDescription` VARCHAR(100) NOT NULL , 
+            `SupplierID` INT(50) NOT NULL , 
+            `CategoryID` INT(50) NOT NULL , 
+            `QuantityPerUnit` INT NOT NULL , 
+            `UnitPrice` INT NOT NULL , 
+            `MSRP` INT NOT NULL , 
+            `AvailableSize` INT NOT NULL , 
+            `AvailableColors` INT NOT NULL , 
+            `Size` INT NOT NULL , 
+            `Color` INT NOT NULL , 
+            `Discount` INT NOT NULL , 
+            `UnitWeight` INT NOT NULL , 
+            `UnitsInStock` INT NOT NULL , 
+            `UnitsOnOrder` INT NOT NULL , 
+            `ReorderLevel` INT NOT NULL , 
+            `ProductAvailable` INT NOT NULL , 
+            `DiscountAvailable` INT NOT NULL , 
+            `CurrentOrder` INT NOT NULL , 
+            `Picture` INT NOT NULL , 
+            `Ranking` INT NOT NULL , 
+            `Note` INT NOT NULL , 
+            `Created` DATETIME NOT NULL , 
+            `Updated` DATETIME NOT NULL , 
+            PRIMARY KEY (`ProductID`),
+            KEY `ProductID` (`ProductID`),
+
+            INDEX (SupplierID),
+            INDEX (CategoryID),
+
+            FOREIGN KEY (SupplierID)
+            REFERENCES Suppliers(SupplierID)
+            ON UPDATE CASCADE ON DELETE CASCADE,
+
+            FOREIGN KEY (CategoryID)
+            REFERENCES Category(CategoryID)
+            ON UPDATE CASCADE ON DELETE NO ACTION
+
+            )ENGINE = InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
       	");
+        }
+    }
+    public function down(){
+        $this->dropTable('Products');
     }
 }

@@ -27,12 +27,21 @@ class CategoryMigration extends AbstractMigration
      */
     public function up()
     {
-$this->execute("
-CREATE TABLE IF NOT EXISTS `Category` ( `CategoryID` INT(10) NOT NULL AUTO_INCREMENT , `CategoryName` VARCHAR(50) NOT NULL , `Description` VARCHAR(100) NOT NULL , `Picture` VARCHAR(50) NOT NULL , `Active` INT(10) NOT NULL , `Created` DATETIME NOT NULL , `Updated` DATETIME NOT NULL , INDEX `CategoryID` (`CategoryID`(10))) ENGINE = InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
- ");
-
+        $this->execute("
+            CREATE TABLE IF NOT EXISTS `Category` ( 
+                `CategoryID` INT(10) NOT NULL AUTO_INCREMENT , 
+                `CategoryName` VARCHAR(50) NOT NULL , 
+                `Description` VARCHAR(100) NOT NULL , 
+                `Picture` VARCHAR(50) NOT NULL , 
+                `Active` INT(10) NOT NULL , 
+                `Created` DATETIME NOT NULL , 
+                `Updated` DATETIME NOT NULL , 
+                PRIMARY KEY (`CategoryID`),
+                KEY `CategoryID` (`CategoryID`) 
+                )ENGINE = InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+        ");
     }
     public function down(){
-        
+        $this->dropTable('Category');
     }
 }

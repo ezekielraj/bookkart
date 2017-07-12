@@ -27,8 +27,43 @@ class OrderDetailsMigration extends AbstractMigration
      */
     public function up()
     {
+        if($this->hasTable('Orders') && $this->hasTable('Products')){
          $this->execute("
-CREATE TABLE IF NOT EXISTS `OrderDetails` ( `OrderID` INT(50) NOT NULL , `ProductID` INT(50) NOT NULL , `OrderNumber` INT(50) NOT NULL , `Price` INT(50) NOT NULL , `Quantity` INT(50) NOT NULL , `Discount` INT(50) NOT NULL , `Total` INT NOT NULL , `IDSKU` INT NOT NULL , `Size` INT NOT NULL , `Color` INT NOT NULL , `Fulfilled` INT NOT NULL , `ShipDate` DATE NOT NULL , `OrderDetailID` INT(20) NOT NULL , `BillDate` DATE NOT NULL , `Created` DATETIME NOT NULL , `Updated` DATETIME NOT NULL ) ENGINE = InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+            CREATE TABLE IF NOT EXISTS `OrderDetails` ( 
+                `OrderID` INT(50) NOT NULL , 
+                `ProductID` INT(50) NOT NULL , 
+                `OrderNumber` INT(50) NOT NULL , 
+                `Price` INT(50) NOT NULL , 
+                `Quantity` INT(50) NOT NULL , 
+                `Discount` INT(50) NOT NULL , 
+                `Total` INT NOT NULL , 
+                `IDSKU` INT NOT NULL , 
+                `Size` INT NOT NULL , 
+                `Color` INT NOT NULL , 
+                `Fulfilled` INT NOT NULL , 
+                `ShipDate` DATE NOT NULL , 
+                `OrderDetailID` INT(20) NOT NULL , 
+                `BillDate` DATE NOT NULL , 
+                `Created` DATETIME NOT NULL , 
+                `Updated` DATETIME NOT NULL ,
+
+                INDEX (OrderID),
+                INDEX (ProductID),
+
+                FOREIGN KEY (OrderID)
+                REFERENCES Orders(OrderID)
+                ON UPDATE CASCADE ON DELETE CASCADE,
+
+                FOREIGN KEY (ProductID)
+                REFERENCES Products(ProductID)
+                ON UPDATE NO ACTION ON DELETE NO ACTION
+
+                )ENGINE = InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
         ");
+        }
     }
+    public function down(){
+        $this->dropTable('OrderDetails');
+    }
+
 }
