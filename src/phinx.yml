@@ -16,10 +16,10 @@ environments:
 
     development:
         adapter: mysql
-        host: sql12.freemysqlhosting.net 
-        name: sql12185320
-        user: sql12185320
-        pass: 'RlUAWqRc16fsdasdfafs'
+        host: localhost
+        name: bookkart
+        user: root
+        pass: 'angelEAR2'
         port: 3306
         charset: utf8
 

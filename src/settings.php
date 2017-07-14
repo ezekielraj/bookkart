@@ -6,10 +6,10 @@ return [
 
         // DB settings
         'db' => [
-            'host' => 'sql12.freemysqlhosting.net',
-            'user'=>'sql12185320',
-            'pass'=>'RlUAWqRc16',
-            'dbname'=>'sql12185320',
+            'host' => 'localhost',
+            'user'=>'root',
+            'pass'=>'angelEAR2',
+            'dbname'=>'bookkart',
         ],
 
         // Monolog settings
