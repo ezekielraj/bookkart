@@ -1,5 +1,9 @@
 <?php
-$app->get('/users', function ($request, $response) {
+
+
+$app->get('/users', 'App\Controller\userController:index'); 
+
+    /*function ($request, $response) {
     $this->logger->addInfo("Users list");
     $users = new App\Model\usersModel($this->db);
     $result = $users->getUsers();
@@ -7,4 +11,4 @@ $app->get('/users', function ($request, $response) {
     $response->getBody()->write(json_encode($result));
 
     return $response;
-});
+});*/
