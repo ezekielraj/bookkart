@@ -2,12 +2,14 @@
 
 namespace App\Model;
 
-class usersModel {
+class usersModel extends Mapper {
     
-    public function __construct($db) {
-        $this->db = $db;
-    }
+  
     public function getUsers(){
-	return "hi";
-    }
+	$sql = "DESCRIBE Suppliers;";
+        $stmt = $this->db->query($sql);
+
+        return var_dump($stmt->fetch());
+        }
+
 }
