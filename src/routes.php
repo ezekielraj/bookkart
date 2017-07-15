@@ -12,3 +12,15 @@ $app->get('/users', 'App\Controller\userController:index');
 
     return $response;
 });*/
+
+$app->group('/products', function(){
+    $this->get('/all', 'App\Controller\productsController:all');
+	
+});
+/*->add(function ($request, $response, $next) {
+    $response->getBody()->write('It is now ');
+    $response = $next($request, $response);
+    $response->getBody()->write('. Enjoy!');
+
+    return $response;
+});*/
