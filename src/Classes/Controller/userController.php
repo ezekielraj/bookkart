@@ -13,9 +13,8 @@ class userController extends Controller
 {
 
     public function index($request, $response, array $args){
-        $this->container->logger->addInfo("Users list");
-    $users = new \App\Model\usersModel($this->container->db);
-    //var_dump($this->container);
+        $this->logger->addInfo("Users list");
+    $users = new \App\Model\usersModel($this->db);
     $result = $users->getUsers();
 
     $response->getBody()->write(json_encode($result));
