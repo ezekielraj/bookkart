@@ -22,6 +22,12 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
+$container['mongodb'] = function ($c) {
+    // connect
+    $m = new MongoDB\Driver\Manager("mongodb://bookkartuser:bookkartpass@localhost:27017/");//.$mongodb['user'].":".$mongodb['pass']."@".$mongodb['host'].":".$mongodb['port']."/");
+    //$db = $m->bookkartdb;//$mongodb['dbname'];
+    return $m;
+};
 
 $container['Controller'] = function($c) {
     return new Controller($c);

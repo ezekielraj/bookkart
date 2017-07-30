@@ -11,7 +11,7 @@ class productsController extends Controller
 
 	public function all($request, $response, array $args){
 		$this->logger->addInfo("All Products list");
-		$products = new \App\Model\productsModel($this->db);
+		$products = new \App\Model\productsModel($this->mongodb);
 		$result = $products->getProducts();
 		$response->getBody()->write(json_encode($result));
 		return $response;

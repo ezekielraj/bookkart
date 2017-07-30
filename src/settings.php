@@ -18,5 +18,13 @@ return [
             'path' => __DIR__ . '/logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        'mongodb' => [
+            'host' => 'localhost',
+            'port' => '27017',
+            'user' => 'bookkartuser',
+            'pass' => 'bookkartpass',
+            'dbname' => 'bookkartdb',
+        ],
     ],
 ];
