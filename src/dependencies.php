@@ -24,7 +24,9 @@ $container['db'] = function ($c) {
 
 $container['mongodb'] = function ($c) {
     // connect
-    $m = new MongoDB\Driver\Manager("mongodb://bookkartuser:bookkartpass@localhost:27017/");//.$mongodb['user'].":".$mongodb['pass']."@".$mongodb['host'].":".$mongodb['port']."/");
+    $m = new \MongoDB\Driver\Manager("mongodb://bookkartuser:bookkartpass@localhost:27017/bookkartdb");
+
+//    $m = new MongoDB\Driver\Manager("mongodb://bookkartuser:bookkartpass@localhost:27017/");//.$mongodb['user'].":".$mongodb['pass']."@".$mongodb['host'].":".$mongodb['port']."/");
     //$db = $m->bookkartdb;//$mongodb['dbname'];
     return $m;
 };

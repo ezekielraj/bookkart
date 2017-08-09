@@ -19,12 +19,15 @@ foreach ($cursor as $document) {
 
 //$rows = $this->mongodb->executeQuery('bookkartdb.foo');
 //return $rows;
-$m = new \MongoDB\Driver\Manager("mongodb://bookkartuser:bookkartpass@localhost:27017/bookkartdb");
+//$m = new \MongoDB\Driver\Manager("mongodb://bookkartuser:bookkartpass@localhost:27017/bookkartdb");
 $filter = [];
 //$options = [ 'projection' => ['_id' => 1] ];
 $query = new \MongoDB\Driver\Query($filter);//, $options);
-$rows = $m->executeQuery('bookkartdb.foo',$query);
-return var_dump($rows);
+$rows = $this->mongodb->executeQuery('bookkartdb.foo',$query);
+foreach($rows as $r){
+   print_r($r);
+}
+return "hi";//var_dump($rows);
 /*$db = $m->bookkartdb;
 $collection = $db->foo;
 $cursor = $collection->find();
